@@ -39,20 +39,20 @@ def find_optimal_comax(wall_height, rebar_diameter, rebar_spacing, w1_thickness,
     return best_combination, best_comax
 
 #Get user input
-wall_height = float(input("Enter wall height (cm): "))
-rebar_diameter = float(input("Enter rebar diameter (mm): "))
-rebar_spacing = float(input("Enter rebar spacing (mm): "))
-w1_thickness = float(input("Enter wall thickness for W1 (mm): "))
-w2_thickness = float(input("Enter wall thickness for W2 (mm): "))
+wall_height = float(input("Entrez votre hauteur d'étage (cm): "))
+rebar_diameter = float(input("Entrez le Ø moyen de l'armature (mm): "))
+rebar_spacing = float(input("Entrez l'écartement de l'armature (mm): "))
+w1_thickness = float(input("Entrez l'épaisseur du premier mur à coffrer (mm): "))
+w2_thickness = float(input("Enter l'épaisseur du deuxième mur à coffrer (mm): "))
 
 # Find and display the optimal combination and attributes
 best_combination, best_comax = find_optimal_comax(wall_height, rebar_diameter, rebar_spacing, w1_thickness, w2_thickness)
 
 if best_combination is not None and best_comax is not None:
     if wall_height < 83:
-        print(f"\n1 x 83cm COMAX Type A {best_comax['Attribute']} can be used (cut to size on site).")
+        print(f"\n1 x 83cm COMAX Type A {best_comax['Attribute']} peut-être utilisé (coupé sur place).")
     else:
-        print(f"\nCOMAX Type A {best_comax['Attribute']} is the best for you.")
-        print(f"The best combination for your floor height ({wall_height}cm) is: {int(best_combination['num_125'])} x 125cm COMAX Type A, {int(best_combination['num_83'])} x 83cm COMAX Type A")
+        print(f"\nCOMAX Type A {best_comax['Attribute']} peut-être utilisé.")
+        print(f"La meilleur combinaison pour votre hauteur d'étage ({wall_height}cm) est: {int(best_combination['num_125'])} x 125cm COMAX Type A, {int(best_combination['num_83'])} x 83cm COMAX Type A")
 else:
-    print("\nNo suitable COMAX combinations found. Consider adjusting your wall dimensions or rebar specifications.")
+    print("\nAucune combinaison de COMAX trouvée. Vérifiez vos valeurs et réessayez.")
